@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import Cart from "../UI/Card";
+import Card from "../UI/Card";
 import Button from "../UI/Button";
 import classes from "./AddUser.module.css";
 
@@ -16,8 +16,7 @@ const AddUser = (props) => {
     if (+enteredAge < 1) {
       return;
     }
-
-    console.log(enteredUsername, enteredAge);
+    props.onAddUser(enteredUsername, enteredAge);
     setEnteredUsername("");
     setEnteredAge("");
   };
@@ -31,7 +30,7 @@ const AddUser = (props) => {
   };
 
   return (
-    <Cart className={classes.input}>
+    <Card className={classes.input}>
       <form onSubmit={addUserHandler}>
         <label htmlFor="username">Username</label>
         <input
@@ -47,9 +46,9 @@ const AddUser = (props) => {
           value={enteredAge}
           onChange={ageChangeHandler}
         />
-        <Button type="sumbit">Add User</Button>
+        <Button type="submit">Add User</Button>
       </form>
-    </Cart>
+    </Card>
   );
 };
 
